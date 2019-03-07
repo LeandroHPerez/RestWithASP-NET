@@ -4,15 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using RestWithASPNET.Model;
-using RestWithASPNET.Services.Implementations;
+using RestWithASPNET.Services;
 
 namespace RestWithASPNET.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class PersonsController : ControllerBase
+    public class PersonsController : Controller
     {
-
         private IPersonService _personService;
 
         public PersonsController(IPersonService personService) // recebe a injeção de dependência  que foi feita no Startup.cs via linha: services.AddScoped<IPersonService, PersonServiceImpl>();
@@ -55,12 +53,12 @@ namespace RestWithASPNET.Controllers
         // PUT api/values/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Person person)
-        {            
+        {
             if (person == null)
                 return BadRequest();
 
             return new ObjectResult(_personService.Update(person));
-        
+
         }
 
         // DELETE api/values/5

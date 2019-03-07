@@ -19,4 +19,3 @@ namespace RestWithASPNET.Model.Context
         public DbSet<Person> Persons { get; set; }
     }
 }
-

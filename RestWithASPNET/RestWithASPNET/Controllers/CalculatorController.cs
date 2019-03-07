@@ -7,8 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace RestWithASPNET.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class CalculatorController : ControllerBase
+    public class CalculatorController : Controller
     {
         // GET api/calculator/sum/1/2
         [HttpGet("sum/{firstNumber}/{secondNumber}")]
@@ -110,7 +109,7 @@ namespace RestWithASPNET.Controllers
         {
             double number;
             bool isNumber = double.TryParse(strNumber, System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out number);
-               
+
             return isNumber;
         }
     }
